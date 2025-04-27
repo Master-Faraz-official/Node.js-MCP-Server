@@ -1,12 +1,12 @@
 // Import required modules
-const express = require("express"); // Web framework for building APIs
-const axios = require("axios"); // HTTP client for making API requests
-const bodyParser = require("body-parser"); // Middleware for parsing JSON request bodies
-const cors = require("cors"); // Middleware for enabling Cross-Origin Resource Sharing
+const express = require("express");
+const axios = require("axios");
+const bodyParser = require("body-parser");
+const cors = require("cors"); 
 
 // Initialize the Express app
 const app = express();
-const PORT = 3000; // Define the port on which the server will run
+const PORT = 3000; 
 
 // Middleware setup
 app.use(cors()); // Enable CORS for all routes
@@ -28,7 +28,6 @@ app.get("/v1/models", async (req, res) => {
       })),
     });
   } catch (error) {
-    // Log the error and send a 500 response if the API call fails
     console.error("Error fetching models:", error.message);
     res.status(500).json({ error: "Failed to fetch models from LM Studio" });
   }
@@ -42,10 +41,10 @@ app.post("/v1/chat/completions", async (req, res) => {
   try {
     // Make a POST request to the LM Studio API for chat completion
     const response = await axios.post('http://localhost:11434/api/chat', {
-      model: model, // Model to use for chat completion
-      messages: messages, // Conversation history
+      model: model, 
+      messages: messages, 
       options: {
-        temperature: temperature, // Sampling temperature for response generation
+        temperature: temperature, 
       },
       stream: false, // Disable streaming responses
     });
@@ -77,13 +76,11 @@ app.post("/v1/chat/completions", async (req, res) => {
     });
 
   } catch (err) {
-    // Log the error and send a 500 response if the API call fails
     console.error("Error during chat completion:", err.message);
     res.status(500).json({ error: "Failed to call LM Studio API" });
   }
 });
 
-// Start the server and listen on the specified port
 app.listen(PORT, () => {
   console.log(`🚀 MCP server running at http://localhost:${PORT}`);
 });
