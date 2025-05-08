@@ -1,8 +1,8 @@
-
-# MCP Server
+# Model Communication Protocol Server
 
 A simple **Node.js** server that acts as a proxy for interacting with **LM Studio** models.  
 It provides two API endpoints:
+
 - Fetch available models
 - Perform chat completions
 
@@ -22,6 +22,7 @@ Built using **Express.js**, **Axios**, and **Body-parser**.
 ## 📦 Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/master-faraz-official/mcp-server.git
    cd mcp-server
@@ -55,6 +56,7 @@ Built using **Express.js**, **Axios**, and **Body-parser**.
 Fetches a list of available models from LM Studio.
 
 **Example Response:**
+
 ```json
 {
   "object": "list",
@@ -75,17 +77,17 @@ Fetches a list of available models from LM Studio.
 Send a chat conversation and get a model's response.
 
 **Request Body:**
+
 ```json
 {
   "model": "your-model-id",
-  "messages": [
-    { "role": "user", "content": "Hello!" }
-  ],
+  "messages": [{ "role": "user", "content": "Hello!" }],
   "temperature": 0.7
 }
 ```
 
 **Example Response:**
+
 ```json
 {
   "id": "chatcmpl-abc123",
